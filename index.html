@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>va8v — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Fira+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --radius:16px;
+      --maxw:820px;
+    }
+
+    body{
+      margin:0;
+      height:100vh;
+      background:url('background.gif') center/cover fixed no-repeat;
+      color:#000;
+      font-family:'Space Grotesk',sans-serif;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .card{
+      width:100%;
+      max-width:var(--maxw);
+      background:transparent;
+      text-align:center;
+      padding:20px 40px 40px;
+      position:relative;
+    }
+
+    .avatar-wrap{
+      display:flex;
+      justify-content:center;
+      margin-bottom:20px;
+    }
+
+    .avatar{
+      width:150px;
+      height:150px;
+      border-radius:999px;
+      overflow:hidden;
+      border:6px solid rgba(0,0,0,0.25);
+      box-shadow:0 6px 18px rgba(0,0,0,0.45);
+    }
+
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    h1{
+      margin:10px 0;
+      font-size:28px;
+      text-align:center;
+    }
+
+    .sub{
+      text-align:center;
+      color:#333;
+      margin-bottom:16px;
+      font-family:'Fira Mono';
+    }
+
+    .time-row{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      margin-bottom:22px;
+    }
+
+    .badge{
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(0,0,0,0.1);
+      font-weight:600;
+      font-size:14px;
+    }
+
+    .content{
+      text-align:center;
+      color:#000;
+      font-size:15px;
+      line-height:1.7;
+      padding:0 30px;
+    }
+
+    /* Spotify player */
+    .spotify-player{
+      position:fixed;
+      bottom:20px;
+      left:20px;
+      border-radius:12px;
+      width:300px;
+      height:80px;
+      overflow:hidden;
+      z-index:99;
+    }
+  </style>
+
+</head>
+<body>
+
+  <main class="card">
+    <div class="avatar-wrap">
+      <div class="avatar"><img id="avatar" src="avatar.png"></div>
+    </div>
+
+    <h1>Hi, I'm <span class="name">va8v</span>!</h1>
+    <div class="sub">(=ↀωↀ=)</div>
+
+    <div class="time-row">
+      <div class="badge" id="dateText"></div>
+      <div class="badge" id="timeText"></div>
+    </div>
+
+    <div class="content">
+      <p>I’m a 17-year-old developer learning Python & HTML. I stream, game, and build fun projects.</p>
+      <p>Enjoy your stay — everything updates live on the page.</p>
+
+      <div class="socials" style="margin-top:25px; display:flex; justify-content:center; gap:26px;">
+        <a href="https://www.youtube.com/@va8v" target="_blank">
+          <img src="youtube.gif" style="width:42px;height:42px;">
+        </a>
+        <a href="https://www.twitch.tv/va8v_" target="_blank">
+          <img src="twitch.gif" style="width:42px;height:42px;">
+        </a>
+        <a href="https://www.roblox.com/users/578626/profile" target="_blank">
+          <img src="roblox.gif" style="width:42px;height:42px;">
+        </a>
+      </div>
+
+      <p style="margin-top:16px;">— Made with ♥ using HTML, CSS & JS</p>
+    </div>
+  </main>
+
+  <!-- Spotify Player -->
+  <div class="spotify-player">
+    <iframe style="border-radius:12px" 
+      src="https://open.spotify.com/embed/album/6Rl6YoCarF2GHPSQmmFjuR?utm_source=generator&theme=0" 
+      width="300" height="80" frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+  </div>
+
+<script>
+function pad(n){return n<10?'0'+n:n;}
+function updateTime(){
+  const n=new Date();
+  document.getElementById('dateText').textContent=
+    n.toLocaleDateString(undefined,{weekday:'short',day:'2-digit',month:'short'});
+  let h=n.getHours(),amp=h>=12?'pm':'am';h%=12;if(h===0)h=12;
+  document.getElementById('timeText').textContent=
+    `${h}:${pad(n.getMinutes())}:${pad(n.getSeconds())} ${amp}`;
+}
+setInterval(updateTime,1000);
+updateTime();
+</script>
+
+<!-- Load ONeko (your cat) -->
+<script src="oneko.js"></script>
+
+</body>
+</html>
